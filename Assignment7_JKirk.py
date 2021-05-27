@@ -1,14 +1,26 @@
+import os, pathlib
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from pathlib import Path
 
 """ 
 Estabilsh file path (variable or function)
 """
-pdf_path = '/Users/birdsmini/Documents/PCC/CIS 112/Code/Assignments/07/From_pythonlearn_ch8.pdf'
+# mac path
+# pdf_path = '/Users/birdsmini/Documents/PCC/CIS 112/Code/Assignments/07/From_pythonlearn_ch8.pdf'
+# windows path
+# pdf_path = 'C:/Users/Jaybi/Desktop/PCC/CIS 112/Code/Assignments/07/CIS112_Assignment7_ExtractPdfPages/From_pythonlearn_ch8.pdf'
+
+
+# import path via cwd
+fileName = 'From_pythonlearn_ch8.pdf'
+pdf_path = os.path.join(pathlib.Path.cwd(), fileName)
+print("\n\n" + pdf_path)
+
+
 """ 
 Estabilsh input variable (variable or function)
 """
-input_pdf = PdfFileReader(pdf_path)
+input_pdf = PdfFileReader('C:/Users/Jaybi/Desktop/PCC/CIS 112/Code/Assignments/07/CIS112_Assignment7_ExtractPdfPages/From_pythonlearn_ch8.pdf')
 """ 
 Estabilsh output variable (variable or function)
 """
@@ -28,9 +40,14 @@ def getName(name):
     return name + pdfStr
 name = getName("new")
 
+
+# function to read and add pages to output_pdf
+getPages(1, 4)
+
+# completes output of file
 with Path (name).open(mode="wb") as outputFile:
     output_pdf.write(outputFile)
 
-getPages(1, 4)
+
 
 
